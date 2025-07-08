@@ -8,12 +8,14 @@
 //定义相关组件
 const notFound = () => import('@/views/app/404')
 const home = () => import('@/views/app/Home.vue')
-const contributionDetails = () => import('@/views/app/accountOpeningApplication/ContributionDetails.vue')
+// const contributionDetails = () => import('@/views/app/accountOpeningApplication/ContributionDetails.vue')
 const mine = () => import('@/views/app/Mine.vue')
 const products = () => import('@/views/app/Products.vue')
 const services = () => import('@/views/app/Services.vue')
 const identityVerification = () => import('@/views/index.vue')
 const protocolSpecification = () => import('@/views/employeeInvitation/ProtocolSpecification.vue')
+const employeeInformation = () => import('@/views/employeeInvitation/EmployeeInformation.vue')
+const ContributionDetails = () => import('@/views/employeeInvitation/ContributionDetails.vue')
 
 export default [
   {
@@ -43,10 +45,10 @@ export default [
       title: '首頁'
     }
   },
-  {
-    path: '/contributionDetails',
-    component: contributionDetails
-  },
+  // {
+  //   path: '/contributionDetails',
+  //   component: contributionDetails
+  // },
   {
     path: '/mine',
     name: 'mine',
@@ -88,6 +90,22 @@ export default [
     component: protocolSpecification,
     meta: {
       title: '协议说明'
+    }
+  },
+  {
+    path: '/employee-information',
+    name: 'EmployeeInformation',
+    component: employeeInformation,
+    meta: {
+      title: '僱員信息'
+    }
+  },
+  {
+    path: '/ContributionDetails',
+    name: 'ContributionDetails',
+    component: ContributionDetails,
+    meta: {
+      title: '供款详情'
     }
   }
 ]
