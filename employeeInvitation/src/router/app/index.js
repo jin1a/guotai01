@@ -12,6 +12,7 @@ const contributionDetails = () => import('@/views/app/accountOpeningApplication/
 const mine = () => import('@/views/app/Mine.vue')
 const products = () => import('@/views/app/Products.vue')
 const services = () => import('@/views/app/Services.vue')
+const identityVerification = () => import('@/views/index.vue')
 
 export default [
   {
@@ -27,6 +28,14 @@ export default [
   },
   {
     path: '/',
+    name: 'identity-verification',
+    component: identityVerification,
+    meta: {
+      title: '身份驗證'
+    }
+  },
+  {
+    path: '/home',
     name: 'home',
     component: home,
     meta: {
