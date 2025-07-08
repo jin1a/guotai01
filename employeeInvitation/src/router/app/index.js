@@ -13,6 +13,7 @@ const mine = () => import('@/views/app/Mine.vue')
 const products = () => import('@/views/app/Products.vue')
 const services = () => import('@/views/app/Services.vue')
 const identityVerification = () => import('@/views/index.vue')
+const protocolSpecification = () => import('@/views/employeeInvitation/ProtocolSpecification.vue')
 
 export default [
   {
@@ -79,6 +80,14 @@ export default [
     component: () => import('@/views/app/employeeInvitation/AcceptInvitation.vue'),
     meta: {
       title: '遞交僱員開戶申請'
+    }
+  },
+  {
+    path: '/protocol-specification',
+    name: 'ProtocolSpecification',
+    component: protocolSpecification,
+    meta: {
+      title: '协议说明'
     }
   }
 ]
