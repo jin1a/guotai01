@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* 按钮相关变量 */
+  --el-button-bg-color: #F39800 !important;
+  --el-button-border-color: #F39800 !important;
+  --el-button-hover-bg-color: #d98600 !important;
+  --el-button-hover-border-color: #d98600 !important;
+  --el-button-active-bg-color: #c27500 !important;
+  --el-button-active-border-color: #c27500 !important;
+  
+  /* 主色相关变量 */
+  --el-color-primary: #2C8976 !important;
+  --el-color-primary-light-3: #64a799 !important;
+  --el-color-primary-light-5: #8abfb4 !important;
+  --el-color-primary-light-7: #b0d7cf !important;
+  --el-color-primary-light-8: #c7e3dd !important;
+  --el-color-primary-light-9: #e3f1ee !important;
+  --el-color-primary-dark-2: #236c5e !important;
+
+  /* 全局字体设置 */
+  --el-font-family: "Microsoft JhengHei UI", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  
+  /* 全局字号设置 */
+  --el-font-size-base: 14px;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Microsoft JhengHei UI", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Microsoft JhengHei UI", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-form {
+  width: 400px;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Element Plus 组件主题覆盖 */
+.el-button--primary {
+  --el-button-bg-color: #F39800 !important;
+  --el-button-border-color: #F39800 !important;
+  --el-button-hover-bg-color: #d98600 !important;
+  --el-button-hover-border-color: #d98600 !important;
+  --el-button-active-bg-color: #c27500 !important;
+  --el-button-active-border-color: #c27500 !important;
+  background-color: #F39800 !important;
+  border-color: #F39800 !important;
+}
+
+/* Link类型的primary按钮 */
+.el-button--primary.is-link {
+  --el-button-text-color: #F39800 !important;
+  --el-button-hover-text-color: #d98600 !important;
+  --el-button-active-text-color: #c27500 !important;
+  --el-button-disabled-text-color: #F39800 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #F39800 !important;
+  padding: 0 !important;
+}
+
+.el-button--primary.is-link:hover {
+  color: #d98600 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  text-decoration: none !important;
+}
+
+.el-button--primary.is-link:active {
+  color: #c27500 !important;
+}
+
+.el-button--primary.is-link.is-disabled {
+  color: #F39800 !important;
+  opacity: 0.5;
+}
+
+.el-button--primary:hover {
+  background-color: #d98600 !important;
+  border-color: #d98600 !important;
+}
+
+/* 朴素按钮样式 */
+.el-button--primary.is-plain {
+  --el-button-bg-color: #fff !important;
+  --el-button-border-color: #F39800 !important;
+  --el-button-text-color: #F39800 !important;
+  --el-button-hover-text-color: #fff !important;
+  --el-button-hover-bg-color: #F39800 !important;
+  --el-button-hover-border-color: #F39800 !important;
+  --el-button-active-text-color: #fff !important;
+  background-color: #fff !important;
+  border-color: #F39800 !important;
+  color: #F39800 !important;
+}
+
+.el-button--primary.is-plain:hover {
+  background-color: #F39800 !important;
+  border-color: #F39800 !important;
+  color: #fff !important;
+}
+
+/* 文字按钮样式 */
+.el-button--primary.is-text {
+  --el-button-text-color: #F39800 !important;
+  --el-button-bg-color: transparent !important;
+  --el-button-hover-bg-color: #fef3e6 !important;
+  --el-button-active-bg-color: #feebd9 !important;
+  --el-button-hover-text-color: #F39800 !important;
+  --el-button-active-text-color: #F39800 !important;
+  color: #F39800 !important;
+}
+
+.el-button--primary.is-text:hover {
+  background-color: #fef3e6 !important;
+  color: #F39800 !important;
+}
+
+.el-link.el-link--primary {
+  --el-link-hover-text-color: #236c5e;
+}
+
+.el-input__wrapper.is-focus {
+  --el-input-focus-border-color: #2C8976;
+}
+
+.el-switch.is-checked {
+  --el-switch-on-color: #2C8976;
+}
+
+.el-checkbox.is-checked {
+  --el-checkbox-checked-bg-color: #2C8976;
+  --el-checkbox-checked-input-border-color: #2C8976;
+}
+
+.el-radio.is-checked {
+  --el-radio-checked-bg-color: #2C8976;
+  --el-radio-checked-input-border-color: #2C8976;
+}
+
+.el-select .el-input.is-focus {
+  --el-select-input-focus-border-color: #2C8976;
+}
+
+.el-date-table td.current:not(.disabled) span {
+  background-color: #2C8976;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #2C8976;
+}
+
+/* Element Plus 组件字体覆盖 */
+.el-button,
+.el-input,
+.el-select,
+.el-menu,
+.el-dropdown,
+.el-table,
+.el-dialog,
+.el-message-box,
+.el-popover,
+.el-tooltip,
+.el-tag {
+  font-family: "Microsoft JhengHei UI", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+}
+
+/* 输入框字号 */
+.el-input__inner {
+  font-size: 14px !important;
+}
+
+/* 下拉菜单字号 */
+.el-dropdown-menu__item {
+  font-size: 14px !important;
+}
+
+/* 表格字号 */
+.el-table {
+  font-size: 14px !important;
+}
+.el-table th {
+  font-size: 14px !important;
+}
+
+/* 弹窗字号 */
+.el-dialog__title {
+  font-size: 16px !important;  /* 标题稍大一点 */
+}
+.el-dialog__body {
+  font-size: 14px !important;
+}
+
+/* 表单标签字号 */
+.el-form-item__label {
+  font-size: 14px !important;
+}
+
+/* Tag样式单独设置 */
+.el-tag {
+  height: auto !important;  /* 自适应高度 */
+  padding: 6px 12px !important;  /* 调整内边距使其更协调 */
+  line-height: 26px !important;  /* 与其他组件保持一致的行高 */
+  font-size: 14px !important;
+} 

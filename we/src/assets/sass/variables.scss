@@ -1,0 +1,174 @@
+//颜色
+$white: #fff !default;
+$green: #5ebc75 !default;
+$red: #ff0000 !default;
+$yellow: #f2c44d !default;
+$orange: #fa6b4b !default;
+$gray: #b1b1b1 !default;
+$black: #000 !default;
+$blue: #1989fa !default;
+
+$gray-base: #999 !default;
+$gray-dark: #666 !default;
+$gray-darker: #333 !default;
+$gray-darker-cell: #969799 !default;
+
+$font-size-base: 14px !default;
+$font-size-large: 16px !default;
+$font-size-small: 12px !default;
+$font-size-xl: 18px !default;
+//文字列表
+$font-size-list: 12 13 14 16 18 20 22 24 26;
+// 宽度列表
+$width-list: 16 20 22 30 32 40 50 56 60 70 80 86 100 110 120 140 150 155 160 180 192 200 220 260 280 315 325 350 400 440 445 450 550 700 1340;
+// 宽度列表
+$font-weight-list: 100 200 300 400 500 600 700 800 900 1000;
+
+// 内外边距列表
+$distance-list: 0 1 2 5 6 8 9 10 12 15 16 20 24 25 28 30 35 38 33 40 45 48 50 60 65 70 80 86 90 100 110 120 130 140 150 160 170 180 190 200;
+$distance-class-list: m, mv, mh, mt, ml, mr, mb, p, pv, ph, pt, pl, pr, pb, top,
+   left, right, bottom;
+
+ // 新内外边距
+$spacing-multiple-list: 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 6 8 9 10 12 15 16 20 24 25 28 30 35 38 33 40 45 48 50 60 65 70 80 86 90 100 110 120 130 140 150 160 170 180 190 200;
+$spacing-class-list: m, mv, mh, mt, ml, mr, mb, p, pv, ph, pt, pl, pr, pb, top,
+left, right, bottom;
+
+//圆角弧度
+$radius: 1 2 3 4 5 6 7 8 9 10 12 15 18 20 50 100;
+
+//透明度
+$opacity: 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9;
+
+// ==================== UI 规范 ====================
+
+/* ====================
+   颜色
+   ==================== */
+
+// 主题色：主要用于按钮、icon、文字、输入框、边框、背景等
+$primary-color: #FA6B4B;
+
+// 辅助色：主要用于icon、页面点缀以及相应的功能色，辅助色和弱打扰的颜色可自定义。
+$accessory-color-regular: #FFA200; // 常规辅助色
+$accessory-color-secondary: #1677FF; // 次要辅助色
+$accessory-color-distraction-weak: #5C74B8; // 弱打扰
+$accessory-color-error-warning: #FF4019; // 错误/警示色
+$accessory-color-success-safe: #00B33B; // 成功/安全色
+
+// 文字颜色定义
+$font-color-primary: $primary-color; // 主要文字颜色
+$font-color-regular: #333; // 常规文字颜色
+$font-color-secondary: #666; // 次要文字颜色
+$font-color-auxiliary: #999; // 辅助文字颜色
+$font-color-reverse-gray: #BDBDBD; // 灰底反显文字颜色
+$font-color-reverse-white: #CCC; // 白底反显文字颜色
+$font-color-placeholder: $font-color-reverse-white; // 输入框提示文字颜色
+
+// 背景颜色定义
+$bg-color-overlay: rgba(0, 0, 0, 0.4); // 弹框背景蒙层 40%透明度
+$bg-color-regular: #F5F5F5; // 常规背景色
+$bg-color-hint: #FFF3D7; // 提示语背景
+$bg-color-warning: #FFE8E3; // 警示语背景
+$bg-color-main: #F8F8F8; // 常规文字背景
+$bg-color-backup-blue: #ADCBFF; // 备用背景-蓝
+$bg-color-backup-purple: #CFC3FE; // 备用背景-紫
+
+// 分割线颜色
+$border-color-regular: #F1F1F1; // 常规分割线颜色
+$border-color-weak: #F0F0F0; // 弱分割线颜色
+
+// 反白颜色
+$reverse-white-color-regular: #FFF; // 常规反白颜色
+$reverse-white-color-secondary: rgba(255, 255, 255, 0.8); // 次要反白颜色，透明度80%
+
+/* ====================
+   文字
+   ==================== */
+
+/* 字体：手机银行UI界面中的字体使用系统自带字体；
+    iOS: 中/英字体 苹方/Helvetica Neue；
+    Android: 中/英字体 思源黑体/Roboto；
+    备选：中/英字体 微软雅黑/Noto Sans  */
+
+// 字号
+$font-size-base: 16px; // 基础字号
+// 常规字号：用于界面中各个层级的文本内容，
+$font-size-tag-text: 10px; // 标签文字
+$font-size-auxiliary: 12px; // 辅助信息；次级信息的正文
+$font-size-main: 14px; // 主要信息的正文
+$font-size-highlighted: 15px; // 突出显示的正文内容
+$font-size-secondary-title: 16px; // 次级内容标题；页面主流程操作
+$font-size-main-process: 16px; // 页面主流程操作
+$font-size-primary-title: 18px; // 导航栏标题；第一层级内容的标题
+
+// 特殊数字或图形化字符：字号较大，通常用于数字的输入，或需要着重强调的内容
+$font-size-prominent-title: 20px; // 醒目的内容大标题
+$font-size-name-card: 24px; // 名片的姓名显示
+$font-size-regular-amount: 28px; // 常规的金额数字显示
+$font-size-graphic-decoration: 32px; // 图形化装饰性字符
+
+// 行高倍数：建议单行文本的行高倍数=1，如弹框标题；多行文本的行高倍数=1.4，英文的行高倍数=1.2，如正文；选取行高时尽量选取基本单位8的增量或相邻偶数。
+$font-line-height-single: 1; // 单行文本
+$font-line-height-multi-chinese: 1.4; // 多行文本-中文
+$font-line-height-multi-english: 1.2; // 多行文本-英文
+
+// 字重
+$font-weight-regular: 400; // 常规
+$font-weight-medium: 500; // 中黑
+$font-weight-semi-bold: 600; // 中粗
+
+/* ====================
+   按钮
+   ==================== */
+
+// 按钮文字颜色
+$btn-font-color-primary: #FFFFFF;
+$btn-font-color-secondary: $primary-color;
+
+// 按钮背景渐变色
+$btn-primary-bg-color-start: #FF8850;
+$btn-primary-bg-color-end: #FF5505;
+
+$btn-secondary-bg-color: #FFFFFF;
+$btn-secondary-border-color: $primary-color;
+$btn-secondary-pressed-bg-color: rgba(250, 107, 75, 0.1);
+
+$btn-disabled-opacity: 0.2;
+// 按钮高度
+$btn-height-large: 44px;
+$btn-height-middle: 40px;
+$btn-height-small: 28px;
+$btn-height-extra-small: 22px;
+
+// 按钮文字
+$btn-font-size-large: 16px;
+$btn-font-size-middle: 14px;
+$btn-font-size-small: 12px;
+$btn-font-size-extra-small: 12px;
+
+/* ====================
+    栅格布局
+   ==================== */
+/* 用户追求高效、便捷，所以栅格的设置不能太拥挤也不能太松散，因此使用经典的栏式网格更符合手机银行的整体调性
+   界面中的间距应尽量以基本单位「8」整数倍的增量来定义，以保证界面清晰有秩序的层次结构。特殊情况下，可使用0.5或1.5等倍数定义间距。*/
+$base-spacing: 8px; // 最小单位/基础间距：
+$grid-column-count: 6; // 栅格栏数
+
+// ==================== 自定义 start ====================
+// 边框宽度
+$border-width-regular: 1px;
+
+// 背景色-我的
+$bg-color-gradient-start: #FF9E59;
+$bg-color-gradient-end: $primary-color;
+
+$bg-color-header-notice: #FFF6F4;
+
+// 文字间距
+$font-spacing: 1 * $base-spacing;
+
+// 高度
+$height-cell-regular: 50px;
+$height-cell-title: 44px;
+

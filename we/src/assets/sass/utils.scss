@@ -1,0 +1,665 @@
+//浮动、清除浮动
+.clearfix {
+  @include clearfix;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+//字体相关
+.fs12 {
+  font-size: $font-size-small;
+}
+
+.fs14 {
+  font-size: $font-size-base;
+}
+
+.fs16 {
+  font-size: $font-size-large;
+}
+
+.fs18 {
+  font-size: $font-size-xl;
+}
+
+.fw600 {
+  font-weight: 600 !important;
+}
+
+.fwb {
+  font-weight: bold !important;
+}
+
+.ffP {
+  font-family: PingFangSC-Regular, PingFang SC;
+  ;
+}
+
+// 宽度
+.w36 {
+  width: 36px;
+}
+
+//布局定位
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.mh-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide {
+  visibility: hidden !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.flex {
+  display: -webkit-flex !important;
+  display: flex !important;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.inline-flex {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+.inline-b {
+  display: inline-block !important;
+}
+
+.justify-content-c {
+  justify-content: center;
+}
+
+.justify-content-a {
+  justify-content: space-around;
+}
+
+.justify-content-e {
+  justify-content: space-evenly;
+}
+
+.justify-content-fs {
+  justify-content: flex-start;
+}
+
+.justify-content-fe {
+  justify-content: flex-end;
+}
+
+.justify-content-b {
+  justify-content: space-between;
+}
+
+.align-items-c {
+  align-items: center;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-column-b {
+  @extend .flex-column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.flex-column-c {
+  @extend .flex-column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-c {
+  @extend .flex-row;
+  align-items: center;
+}
+
+.flex-row-e {
+  @extend .flex-row;
+  //justify-content: flex-end;
+  //align-items: center;
+}
+
+.flex-row-b {
+  @extend .flex-row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 常用文字颜色
+.c-gray-base {
+  color: $gray-base !important;
+}
+
+.c-gray-dark {
+  color: $gray-dark !important;
+}
+
+.c-gray-darker {
+  color: $gray-darker !important;
+}
+
+.gray-darker-cell {
+  color: $gray-darker-cell !important;
+}
+
+// 文字位置设置
+.text-left {
+  text-align: left !important;
+
+  .van-field__control {
+    text-align: left !important;
+  }
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-indent {
+  text-indent: 20px;
+}
+
+// 垂直方向对齐方式
+.v-top {
+  vertical-align: top !important;
+}
+
+.v-middle {
+  vertical-align: middle !important;
+}
+
+.v-bottom {
+  vertical-align: bottom !important;
+}
+
+.v-baseline {
+  vertical-align: baseline !important;
+}
+
+//单行省略
+.ellipsis {
+  @include text-overflow;
+}
+
+//颜色
+.green {
+  color: $green !important;
+}
+
+.red {
+  color: $red !important;
+}
+
+.reddish {
+  color: #E8443C !important;
+}
+
+.yellow {
+  color: $yellow !important;
+}
+
+.gray {
+  color: $gray !important;
+}
+
+.white {
+  color: $white !important;
+}
+
+.orange {
+  color: $orange !important;
+}
+
+.blue {
+  color: $blue !important;
+}
+
+.bg-black {
+  background: $black !important;
+}
+
+.bg-white {
+  background: $white !important;
+}
+
+.bg-orange {
+  background-color: $orange !important;
+}
+
+.bg-none {
+  background-color: transparent !important;
+}
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-header-notice {
+  background-color: $bg-color-header-notice;
+}
+
+.van-toast--text {
+  padding: 12px 20px !important;
+
+  .van-toast__text {
+    margin-top: 1px;
+  }
+}
+
+.van-toast {
+  padding: 20px;
+
+  .van-loading__spinner {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+
+  .van-icon {
+    font-size: 50px;
+    margin-bottom: 5px;
+  }
+
+  //.van-toast__text{
+  //  margin-top: 16px;
+  //}
+
+
+}
+
+.cancelDialog {
+  .van-dialog__footer {
+    .van-button {
+      color: #7f3208 !important;
+    }
+  }
+}
+
+// 页面横向边距 16px
+// 横向间距 horizontal-spacing 16px
+.h-spacing {
+  margin-left: 2 * $base-spacing;
+  margin-right: 2 * $base-spacing;
+}
+
+// 纵向间距 vertical-spacing 12px
+.v-spacing {
+  margin-top: 1.5 * $base-spacing;
+}
+
+// 主信息背景-如投保结果页-订单信息
+.bg-text-main {
+  padding: 1.5 * $base-spacing 2 * $base-spacing;
+  background-color: $bg-color-main;
+  border-radius: $base-spacing;
+}
+
+// 重要信息背景-如我的保险信息
+.bg-text-gradient {
+  background: linear-gradient(to right, $bg-color-gradient-start, $bg-color-gradient-end);
+  border-radius: 2 * $base-spacing;
+}
+
+/* ====================
+   文字
+   ==================== */
+
+// 辅助信息（次级信息）的正文内容 12px #333 400
+.text-auxiliary {
+  font-size: $font-size-auxiliary;
+  color: $font-color-regular;
+  font-weight: $font-weight-regular;
+}
+
+.text-auxiliary-info {
+  @extend .text-auxiliary;
+  line-height: 1.5;
+}
+
+// 辅助信息（次级信息）的辅助信息正文内容 12px #999 400
+.text-auxiliary-auxiliary-info {
+  @extend .text-auxiliary-info;
+  color: $font-color-auxiliary;
+}
+
+// 主信息的正文内容 14px #333 400
+.text-main {
+  font-size: $font-size-main;
+  color: $font-color-regular;
+  font-weight: $font-weight-regular;
+  line-height: $font-size-main;
+}
+
+// 主信息的次级内容 14px #666 400
+.text-main-secondary {
+  @extend .text-main;
+  color: $font-color-secondary;
+}
+
+// 文字大小 14sp
+.text-size-main {
+  font-size: $font-size-main;
+}
+
+// 文字大小 18sp
+.text-size-primary {
+  font-size: $font-size-primary-title;
+}
+
+// 主题字体颜色
+.text-color-primary {
+  color: $font-color-primary !important;
+}
+
+// 字体颜色 666
+.text-color-secondary {
+  color: $font-color-secondary !important;
+}
+
+// tag 文字
+.text-tag {
+  font-size: $font-size-tag-text !important;
+}
+
+.text-color-white {
+  color: $reverse-white-color-regular !important;
+}
+
+// 字重 400
+.text-weight-regular {
+  font-weight: $font-weight-regular !important;
+}
+
+// 字重 500
+.text-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+// 字重 600
+.text-weight-semi-bold {
+  font-weight: $font-weight-semi-bold !important;
+}
+
+// 主信息的次级内容 14px #FA6B4B 500
+.text-main-primary {
+  @extend .text-main;
+  @extend .text-color-primary;
+  font-weight: $font-weight-medium;
+}
+
+// 主信息的辅助内容 14px #999 400
+.text-main-auxiliary {
+  @extend .text-main;
+  color: $font-color-auxiliary;
+}
+
+// 主信息的正文内容反白颜色 14px #fff 400
+.text-main-reverse-white {
+  @extend .text-main;
+  color: $reverse-white-color-regular;
+}
+
+// 二级标题 16px #333 500
+.text-secondary-title {
+  font-size: $font-size-secondary-title;
+  color: $font-color-regular;
+  font-weight: $font-weight-medium;
+}
+
+// 二级标题 16px #333 400
+.text-secondary-rugular-title {
+  @extend .text-secondary-title;
+  font-weight: $font-weight-regular;
+}
+
+// 二级标题文字大小 16sp
+.text-size-secondary-title {
+  font-size: $font-size-secondary-title;
+}
+
+// 第一层级内容的标题 18px #333 500
+.text-primary {
+  font-size: $font-size-primary-title;
+  color: $font-color-regular;
+  font-weight: $font-weight-medium;
+}
+
+// 二级金额 20px #fff 600
+.text-secondary-amount {
+  font-size: $font-size-prominent-title;
+  color: $reverse-white-color-regular;
+  font-weight: $font-weight-semi-bold;
+}
+
+// 常规金额 28px #333 600
+.text-main-amount {
+  font-size: $font-size-regular-amount;
+  color: $font-color-regular;
+  font-weight: $font-weight-semi-bold;
+}
+
+.text-main-amount__white {
+  @extend .text-main-amount;
+  color: $reverse-white-color-regular;
+}
+
+// 常规金额 28px #fff 600
+.text-regular-amount {
+  font-size: $font-size-regular-amount;
+  color: $reverse-white-color-regular;
+  font-weight: $font-weight-semi-bold;
+}
+
+// 辅助颜色 14px #1677FF 500
+.text-accessory-secondary {
+  font-size: $font-size-main;
+  font-weight: $font-weight-medium;
+  color: $accessory-color-secondary;
+}
+
+.text-top-spacing {
+  margin-top: $font-spacing;
+}
+
+.text-left-spacing {
+  margin-left: $font-spacing;
+}
+
+.text-line-height {
+  line-height: 1.3;
+}
+
+// 辅助信息背景-如保单详情-状态
+.text-bg-accessory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  height: 3 * $base-spacing;
+  border-radius: 0.5 * $base-spacing;
+  background: rgba(94, 152, 255, 0.08);
+}
+
+/* ====================
+   按钮
+   ==================== */
+.btn {
+  // 基础样式
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--primary {
+    background: linear-gradient(90deg, $btn-primary-bg-color-start 0%, $btn-primary-bg-color-end 100%);
+    border: none;
+    color: $btn-font-color-primary;
+    font-weight: $font-weight-medium;
+
+    &:active,
+    &:focus {
+      background: linear-gradient(90deg, darken($btn-primary-bg-color-start, 10%) 0%, darken($btn-primary-bg-color-end, 10%) 100%);
+    }
+  }
+
+  &--secondary {
+    min-width: 88px;
+    background-color: $btn-secondary-bg-color;
+    border: 1px solid $btn-secondary-border-color;
+    color: $btn-font-color-secondary;
+    font-weight: $font-weight-regular;
+
+    &:active,
+    &:focus {
+      background-color: $btn-secondary-pressed-bg-color;
+    }
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: $btn-disabled-opacity;
+    cursor: not-allowed;
+  }
+
+  &--large {
+    @include btn-sizes($btn-height-large, $btn-font-size-large);
+  }
+
+  &--medium {
+    @include btn-sizes($btn-height-middle, $btn-font-size-middle);
+  }
+
+  &--small {
+    @include btn-sizes($btn-height-small, $btn-font-size-small);
+  }
+
+  &--extra-small {
+    @include btn-sizes($btn-height-extra-small, $btn-font-size-extra-small);
+  }
+
+  // 是否为块级元素
+  &--block {
+    flex: 1;
+  }
+}
+
+/* ====================
+   边框
+   ==================== */
+.border-top {
+  border-top: $border-width-regular solid $border-color-regular;
+}
+
+.border-bottom {
+  border-bottom: $border-width-regular solid $border-color-regular
+}
+
+/* ====================
+   图标
+   ==================== */
+// 大图标 宽高 48px
+.icon-large {
+  width: 4 * $base-spacing;
+  height: 4 * $base-spacing;
+}
+
+// 中图标 宽高 24px
+.icon-medium {
+  width: 3 * $base-spacing;
+  height: 3 * $base-spacing;
+}
+
+// 右边按钮图标 宽高 16px
+.icon-arrow-right {
+  width: 2 * $base-spacing;
+  height: 2 * $base-spacing;
+}
+
+/* ====================
+   容器
+   ==================== */
+// 容器外边距 mh:16px mt:12px
+.container-margin {
+  margin: 1.5 * $base-spacing 2 * $base-spacing 0;
+}
+
+// 容器内边距 ph:32px pt:16px
+.container-padding {
+  padding: 2 * $base-spacing 4 * $base-spacing;
+}
+
+// 白色容器 mh:16px mt:12px ph:32px pv:16px radius: 12px
+.white-container—r1_5x {
+  @extend .container-margin;
+  @extend .bg-white;
+  @extend .radius-1_5x;
+  border: 1px solid #F1F1F1;
+}
+
+// 白色块
+.white-container-r1x {
+  @extend .container-margin;
+  @extend .bg-white;
+  border-radius: $base-spacing;
+}
+
+/* ====================
+   圆角
+   ==================== */
+.radius-1x {
+  border-radius: 1 * $base-spacing;
+}
+
+.radius-1_5x {
+  border-radius: 1.5 * $base-spacing;
+}
+
+.radius-2x {
+  border-radius: 2 * $base-spacing;
+}
+
+
