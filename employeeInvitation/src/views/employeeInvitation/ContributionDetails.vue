@@ -269,16 +269,11 @@ export default {
   align-items: center;
   padding: 16px 24px 24px 24px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
-}
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;  
   gap: 16px;
   margin-top: 32px;
-  padding: 0 8px;
-  background: #fff;
 }
+
 .btn {
   width: 140px;
   height: 44px;
