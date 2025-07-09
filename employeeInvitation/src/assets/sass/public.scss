@@ -35,3 +35,164 @@ body {
   display: flex; justify-content: space-between; justify-items: center; align-items: center; width: 100%
 }
 .van-tag+.van-tag{margin-left: 5px;}
+
+.van-cell {flex-direction: column;}
+.van-cell--required::before{left: 0px !important;}
+ .van-cell .van-cell__value{margin-left:0; }
+.van-field__label{width: auto !important;padding-left: 10px;}
+.van-form .van-cell{padding: 0;}
+.van-cell .inputNew{border: 0;}
+
+
+
+.form-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px 0 0 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 400;
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.form-label.required::before {
+  content: '*';
+  color: #ee0a24;
+  margin-right: 2px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  height: 42px;
+  border: 0.5px solid #eaeaea;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  color: #222;
+  padding: 0 12px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  margin-bottom: 0;
+}
+
+.form-input:focus {
+  border: 1px solid #07c160;
+}
+
+.form-input.readonly {
+  background: #f7f8fa;
+  color: #999;
+  border: 0.5px solid #eaeaea;
+}
+
+/* Vant Field 组件样式覆盖 */
+.van-field__control {
+  height: 42px;
+  font-size: 15px;
+  color: #222;
+}
+
+.van-field--error .van-field__control{
+  color: #ee0a24;
+}
+
+.van-field__error-message {
+  color: #ee0a24;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.van-field__body {
+  padding: 0;
+}
+
+.van-field__control{
+  padding: 0;
+}
+
+.input-arrow {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-arrow input {
+  flex: 1;
+  cursor: pointer;
+}
+
+.input-arrow .van-icon {
+  position: absolute;
+  right: 10px;
+  color: #bbb;
+  font-size: 18px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.field-tip {
+  color: #999;
+  font-size: 12px;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.gender-radio {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #222;
+  font-weight: 400;
+  margin-right: 12px;
+}
+
+.radio-box {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #d1d1d6;
+  border-radius: 4px;
+  margin-right: 6px;
+  background: #fff;
+  vertical-align: middle;
+  transition: border 0.2s;
+}
+
+.gender-radio input[type="radio"] {
+  display: none;
+}
+
+.gender-radio .radio-box.checked {
+  border: 1.5px solid #07c160;
+  background: #07c160;
+}
+
+.gender-radio .radio-box.checked::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 2px;
+  margin: 3px auto;
+}

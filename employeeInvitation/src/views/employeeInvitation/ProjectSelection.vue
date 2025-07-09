@@ -1,308 +1,346 @@
 <template>
-  <div class="contribution-details-container">
-    <div class="content">
-      <h2 class="title">
-        <span class="title-bar"></span>歸屬於僱員的供款投放項目選擇
-      </h2>
-      <div class="formDiv">
-        <van-form @submit="onSubmit" ref="form">
-          <van-field
-            v-model="contributionRatio"
-            label="僱员供款比例"            
-            required
-            readonly
-            clickable           
-            :rules="[{ required: true, message: '请选择僱员供款比例' }]"
-            @click="showRatioPicker = true"
-            input-align="left"
-            class="custom-field"
-          >
-            <template #input>
-              <div class="picker-box" :class="{'selected': contributionRatio !== ''}">                
-                <span :class="{'placeholder': contributionRatio === ''}">{{ contributionRatio?contributionRatio:'请选择' }}</span>
-                <span class="arrow">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6L8 10L12 6" stroke="#bfbfbf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </template>
-          </van-field>
-          <van-popup v-model="showRatioPicker" position="bottom">
-            <van-picker show-toolbar confirm-button-text="確定" cancel-button-text="取消" :columns="ratioOptions" @confirm="onRatioConfirm" @cancel="showRatioPicker = false" />
-          </van-popup>
-
-          <van-field
-            v-model="baseLimit"
-            label="僱员供款计算基准上下限"
-            required
-            readonly
-            clickable           
-            :rules="[{ required: true, message: '请选择供款计算基准上下限' }]"
-            @click="showLimitPicker = true"
-            input-align="left"
-            class="custom-field"
-          >
-            <template #input>
-              <div class="picker-box" :class="{'selected': baseLimit !== ''}">                
-                <span :class="{'placeholder': baseLimit === ''}">{{ baseLimit?baseLimit:'请选择' }}</span>
-                <span class="arrow">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6L8 10L12 6" stroke="#bfbfbf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </template>
-          </van-field>
-          <van-popup v-model="showLimitPicker" position="bottom">
-            <van-picker show-toolbar confirm-button-text="確定" cancel-button-text="取消" :columns="limitOptions" @confirm="onLimitConfirm" @cancel="showLimitPicker = false" />
-          </van-popup>
-
-          <div class="explanation">
-            <div class="explanation-title">说明</div>
-            <ol class="explanation-list">
-              <li>供款金额将截算至元位。如计算出的供款金额的尾数不足一元，则按一元计。</li>
-              <li>每一年度僱员可获得一次调整供款比例及供款计算基准上下限。</li>
-            </ol>
-          </div>
-          <div class="footer">
-            <van-button class="btn btn-outline" block @click="onPrev" type="default">上一步</van-button>
-            <van-button class="btn btn-primary" block native-type="submit" type="primary">下一步</van-button>
-          </div>
-        </van-form>
+  <div class="employee-info-page">
+   
+    <div class="form-area">
+      <div class="form-title">
+        <span class="title-bar"></span>
+        歸屬於僱員的供款投放項目選擇
       </div>
+      <div class="formTip">（填寫前請先向僱主了解此部份是否可由僱員自行填報）</div>
+      <van-form @submit="onSubmit" ref="formRef">
+        <div class="form-group">
+          <label class="form-label">僱員姓名</label>
+          <van-field class="form-input readonly" v-model="form.planCode" readonly />
+        </div>
+        <div class="form-group">
+          <label class="form-label">證件號碼</label>
+          <van-field class="form-input readonly" v-model="form.employerName" readonly />
+        </div>
+        <div class="form-group">
+          <label class="form-label">證件號碼</label>
+          <van-field class="form-input readonly" v-model="form.employerName" readonly />
+        </div>
+        <div class="form-group">
+          <label class="form-label">證件號碼</label>
+          <van-field class="form-input readonly" v-model="form.employerName" readonly />
+        </div>
+        <div class="form-group">
+          <label class="form-label">證件號碼</label>
+          <van-field class="form-input readonly" v-model="form.employerName" readonly />
+        </div>
+
+      </van-form>
     </div>
+    <div class="btn-group">
+      <van-button class="btn-back" type="default" round block @click="onBack">返回</van-button>
+      <van-button class="btn-next" type="success" round block @click="onSubmit">下一步</van-button>
+    </div>
+    <!-- 各类选择器弹窗（省略数据源和事件实现，可根据实际需求补充） -->
+    
   </div>
 </template>
 
 <script>
-import { Popup, Picker, Form, Field, Button } from 'vant'
+import { Icon, Button, Popup, Picker, DatetimePicker, Area, Form, Field } from 'vant'
+import { areaList } from '@vant/area-data'
+import { get } from '@/assets/js/utils/request'
 export default {
-  name: 'ContributionDetails',
+  name: 'EmployeeInformation',
   components: {
+    [Icon.name]: Icon,
+    [Button.name]: Button,
     [Popup.name]: Popup,
     [Picker.name]: Picker,
+    [DatetimePicker.name]: DatetimePicker,
+    [Area.name]: Area,
     [Form.name]: Form,
-    [Field.name]: Field,
-    [Button.name]: Button
+    [Field.name]: Field
   },
   data() {
     return {
-      contributionRatio: '',
-      baseLimit: '',
-      showRatioPicker: false,
-      showLimitPicker: false,
-      ratioOptions: [     
-        { text: '请选择', value: '' },  
-        { text: '5%', value: '5' },
-        { text: '6%', value: '6' }
-      ],
-      limitOptions: [
-       
-        { text: '1000元', value: '1000' },
-        { text: '2000元', value: '2000' }
-      ]
+      form: {
+        planCode: '123456654321',
+        employerName: '僱主',
+        
+      },
+      
     }
   },
-  computed: {
-    // contributionRatioLabel() {
-    //   const found = this.ratioOptions.find(opt => opt.value === this.contributionRatio)
-    //   return found ? found.text : '僱主预设'
-    // },
-    // baseLimitLabel() {
-    //   const found = this.limitOptions.find(opt => opt.value === this.baseLimit)
-    //   return found ? found.text : '不设立'
-    // }
+  mounted() {
+    
   },
   methods: {
-    onPrev() {
-      this.$emit('prev')
-    },
-    onNext() {
-      this.$emit('next')
-    },
-    onRatioConfirm(val) {
-      this.contributionRatio = val.value
-      this.showRatioPicker = false
-    },
-    onLimitConfirm(val) {
-      this.baseLimit = val.value
-      this.showLimitPicker = false
-    },
-    async onSubmit() {
-      // 校验通过自动提交，否则自动提示
-      this.$toast('提交成功')
-      this.onNext()
-    }
+    
   }
 }
 </script>
 
-<style scoped>
-.contribution-details-container {
-  display: flex;
-  flex-direction: column;
+<style lang="scss" scoped>
+.formTip{color: #F6400E;padding: 10px 0 15px 0 ;}
+
+
+
+
+.employee-info-page {
   min-height: 100vh;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.steps-bar {
+  background: linear-gradient(90deg, #5ebc75 0%, #07c160 100%);
+  padding: 0 0 12px 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 8px rgba(7, 193, 96, 0.08);
 }
 
-.content {
-  flex: 1;
-  padding: 24px 16px 120px 16px;
-}
-
-.title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 24px;
+.steps-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0 16px;
 }
+
+.steps-title {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.steps-icon {
+  font-size: 20px;
+  margin-right: 6px;
+  color: #fff;
+}
+
+.steps-numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  color: #07c160;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.form-area {
+  padding: 0 6px 0 6px;
+  margin: 0 15px;
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin: 18px 0 12px 0;
+}
+
 .title-bar {
   width: 4px;
-  height: 24px;
-  background: #009688;
+  height: 22px;
+  background: #07c160;
   border-radius: 2px;
-  display: inline-block;
-  margin-right: 8px;
+  margin-right: 10px;
 }
-.dot {
+
+.form-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px 0 0 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 400;
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.form-label.required::before {
+  content: '*';
+  color: #ee0a24;
+  margin-right: 2px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  height: 42px;
+  border: 0.5px solid #eaeaea;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  color: #222;
+  padding: 0 12px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  margin-bottom: 0;
+}
+
+.form-input:focus {
+  border: 1px solid #07c160;
+}
+
+.form-input.readonly {
+  background: #f7f8fa;
+  color: #999;
+  border: 0.5px solid #eaeaea;
+}
+
+/* Vant Field 组件样式覆盖 */
+:deep(.van-field__control) {
+  height: 42px;
+  font-size: 15px;
+  color: #222;
+}
+
+:deep(.van-field--error .van-field__control) {
+  color: #ee0a24;
+}
+
+:deep(.van-field__error-message) {
+  color: #ee0a24;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+:deep(.van-field__body) {
+  padding: 0;
+}
+
+:deep(.van-field__control) {
+  padding: 0;
+}
+
+.input-arrow {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-arrow input {
+  flex: 1;
+  cursor: pointer;
+}
+
+.input-arrow .van-icon {
+  position: absolute;
+  right: 10px;
+  color: #bbb;
+  font-size: 18px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.field-tip {
+  color: #999;
+  font-size: 12px;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.gender-radio {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #222;
+  font-weight: 400;
+  margin-right: 12px;
+}
+
+.radio-box {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #d1d1d6;
+  border-radius: 4px;
+  margin-right: 6px;
+  background: #fff;
+  vertical-align: middle;
+  transition: border 0.2s;
+}
+
+.gender-radio input[type="radio"] {
   display: none;
 }
 
-.formDiv {
-  background: #fff;
-  border-radius: 8px;
-  padding: 0 0 16px 0;
-}
-.custom-field {
-  margin-bottom: 12px;
-}
-.form-group {
-  margin-bottom: 20px;
+.gender-radio .radio-box.checked {
+  border: 1.5px solid #07c160;
+  background: #07c160;
 }
 
-.label {
+.gender-radio .radio-box.checked::after {
+  content: '';
   display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #222;
-}
-
-.label .desc {
-  color: #fa541c;
-  font-size: 12px;
-  margin-left: 4px;
-}
-
-.required:before {
-  content: '*';
-  color: #fa541c;
-  margin-right: 2px;
-}
-
-.picker-box {
-  width: 100%;
-  height: 44px;
-  border: 1px solid #d9d9d9;
-  border-radius: 8px;
-  padding: 0 14px;
-  font-size: 16px;
+  width: 10px;
+  height: 10px;
   background: #fff;
-  margin-top: 4px;
+  border-radius: 2px;
+  margin: 3px auto;
+}
+
+.btn-group {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  cursor: pointer;
-  transition: box-shadow 0.2s, border-color 0.2s;
-  color: #222;
+  gap: 18px;
+  padding: 20px 18px 60px 18px;
+  background: #fff;
 }
 
-.picker-box:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border-color: #bfbfbf;
-}
-
-.picker-box .arrow {
-  display: flex;
-  align-items: center;
-  margin-left: 8px;
-}
-
-.picker-box .arrow svg {
-  width: 30px;
-  height: 30px;
-}
-
-.picker-box .placeholder {
-  color: #bfbfbf;
-}
-
-.picker-box.selected {
-  color: #222;
-}
-
-.explanation {
-  margin-top: 32px;
-}
-
-.explanation-title {
+.btn-back {
+  flex: 1;
+  background: #fff;
+  color: #269488;
   font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.explanation-list {
-  padding-left: 18px;
-  color: #666;
-  font-size: 15px;
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px 24px 24px;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
-}
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-top: 32px;
-  padding: 0 8px;
-  background: #fff;
-}
-.btn {
-  width: 140px;
-  height: 44px;
+  font-weight: 600;
+  border: 2px solid #269488;
+  height: 48px;
   border-radius: 24px;
-  font-size: 18px;
-  font-weight: 500;
-  border: 1.5px solid #009688;
-  background: #fff;
-  color: #009688;
-  outline: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  margin-right: 0;
+  box-shadow: none;
+  letter-spacing: 2px;
 }
-.btn-primary {
-  background: #009688;
+
+.btn-next {
+  flex: 1;
+  background: #269488;
   color: #fff;
-  border: 1.5px solid #009688;
-}
-.btn-outline {
-  background: #fff;
-  color: #009688;
-  border: 1.5px solid #009688;
-}
-.btn:active {
-  opacity: 0.8;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  height: 48px;
+  border-radius: 24px;
+  margin-left: 0;
+  box-shadow: none;
+  letter-spacing: 2px;
 }
 </style>

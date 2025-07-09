@@ -1,5 +1,6 @@
 <template>
   <div class="contribution-details-container">
+    <Steps :total="7" :nub="2" title="供款详情" />
     <div class="content">
       <h2 class="title">
         <span class="title-bar"></span>供款详情
@@ -76,6 +77,7 @@
 </template>
 
 <script>
+import Steps from '@/components/steps/Steps.vue'
 import { Popup, Picker, Form, Field, Button } from 'vant'
 export default {
   name: 'ContributionDetails',
@@ -84,7 +86,8 @@ export default {
     [Picker.name]: Picker,
     [Form.name]: Form,
     [Field.name]: Field,
-    [Button.name]: Button
+    [Button.name]: Button,
+    Steps
   },
   data() {
     return {

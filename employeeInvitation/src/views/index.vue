@@ -163,6 +163,7 @@ export default {
   margin-right: 0;
 }
 .confirm-btn {
+  border: 0;
   background: #2ca193;
   color: #fff;
   font-size: 16px;

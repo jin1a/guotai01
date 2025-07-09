@@ -16,6 +16,7 @@ const identityVerification = () => import('@/views/index.vue')
 const protocolSpecification = () => import('@/views/employeeInvitation/ProtocolSpecification.vue')
 const employeeInformation = () => import('@/views/employeeInvitation/EmployeeInformation.vue')
 const ContributionDetails = () => import('@/views/employeeInvitation/ContributionDetails.vue')
+const ProjectSelection = () => import('@/views/employeeInvitation/ProjectSelection.vue')
 
 export default [
   {
@@ -106,6 +107,14 @@ export default [
     component: ContributionDetails,
     meta: {
       title: '供款详情'
+    }
+  },
+  {
+    path: '/ProjectSelection',
+    name: 'ProjectSelection',
+    component: ProjectSelection,
+    meta: {
+      title: '歸屬於僱員的供款投放項目選擇'
     }
   }
 ]
