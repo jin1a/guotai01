@@ -2,7 +2,7 @@
   <div class="contribution-details-container">
     <div class="content">
       <h2 class="title">
-        <span class="title-bar"></span>供款详情
+        <span class="title-bar"></span>歸屬於僱員的供款投放項目選擇
       </h2>
       <div class="formDiv">
         <van-form @submit="onSubmit" ref="form">
