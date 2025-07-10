@@ -50,7 +50,11 @@ export default {
       this.$set(this.codeArr, idx, val)
       if (val && idx < 5) {
         const nextInput = this.$refs['input' + (idx + 1)]
-        if (nextInput) nextInput.focus()
+        if (Array.isArray(nextInput) && nextInput[0]) {
+          nextInput[0].focus()
+        } else if (nextInput) {
+          nextInput.focus()
+        }
         this.activeIdx = idx + 1
       }
     },
