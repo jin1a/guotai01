@@ -60,5 +60,17 @@ module.exports = {
           return assetFilename.endsWith('.js')
         }
       })
-  }
+  }, 
+  devServer: {
+    port: 1889,
+    open: true,
+    proxy: {
+      '/api': {        
+        // 测试环境
+        target: 'http://139.159.141.248:8081',        
+        ws: true,
+        changeOrigin: true
+      }
+    }
+  },
 }
