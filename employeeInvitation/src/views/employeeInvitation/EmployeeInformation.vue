@@ -7,7 +7,7 @@
         <span class="title-bar"></span>
         僱員信息
       </div>
-      <van-form @submit="onSubmit" ref="formRef">
+      <van-form ref="formRef">
         <div class="form-group">
           <label class="form-label">計劃編碼</label>
           <van-field class="form-input readonly" v-model="form.planCode" readonly />
@@ -180,7 +180,7 @@
               :rules="[{ 
                 required: true, 
                 validator: (val) => {
-                  return this.addressText && this.addressText.trim() !== ''
+                  return !!(this.addressText && this.addressText.trim() !== '')
                 },
                 message: '請選擇地址' 
               }]"
@@ -238,7 +238,7 @@
     </div>
     <div class="btn-group">
       <van-button class="btn-back" type="default" round block @click="onBack">返回</van-button>
-      <van-button class="btn-next" type="success" round block @click="onSubmit">下一步</van-button>
+      <van-button class="btn-next" type="success"  @click="onSubmit1">下一步</van-button>
     </div>
     <!-- 各类选择器弹窗（省略数据源和事件实现，可根据实际需求补充） -->
     <van-popup v-model="showConnectionPicker" position="bottom">
@@ -364,40 +364,40 @@ export default {
     onBack() {
       this.$router.go(-1)
     },
-    async onSubmit() {
-      try {
-        // 触发表单验证
-        const valid = await this.$refs.formRef.validate()
-        if (valid) {
-          // 额外的业务逻辑验证
-          if (this.form.birthDate && this.form.hireDate) {
-            const birthYear = new Date(this.form.birthDate).getFullYear()
-            const hireYear = new Date(this.form.hireDate).getFullYear()
-            const age = hireYear - birthYear
-            
-            if (age < 16) {
-              this.$toast.fail('聘用時年齡不能少於16歲')
-              return
-            }
-            
-            if (age > 65) {
-              this.$toast.fail('聘用時年齡不能超過65歲')
-              return
-            }
-          }
-          
-          // 表单验证通过，执行下一步操作
-          this.$toast.success('表單驗證通過，正在跳轉...')
-          // 这里可以添加跳转到下一步的逻辑
-          // this.$router.push('/next-step')
-        }
-      } catch (error) {
-        this.$toast.fail('請檢查表單填寫是否正確')
-      }
+    onSubmit1() {
+      let kk=this.$refs.formRef.validate().then(res=>{
+        console.log(res,999)        
+        this.$toast.success('表單驗證通過，正在跳轉...')
+        this.$router.push('/ContributionDetails')
+      }).catch(err=>{
+        console.log(err,888)
+        this.$toast.fail(err[0].message)
+      })      
+      // this.$refs.formRef.validate((valid) => {
+      //   console.log(valid,999)
+      //   if (valid) {
+      //     // 额外的业务逻辑验证
+      //     // if (this.form.birthDate && this.form.hireDate) {
+      //     //   const birthYear = new Date(this.form.birthDate).getFullYear()
+      //     //   const hireYear = new Date(this.form.hireDate).getFullYear()
+      //     //   const age = hireYear - birthYear
+      //     //   if (age < 16) {
+      //     //     this.$toast.fail('聘用時年齡不能少於16歲')
+      //     //     return
+      //     //   }
+      //     //   if (age > 65) {
+      //     //     this.$toast.fail('聘用時年齡不能超過65歲')
+      //     //     return
+      //     //   }
+      //     // }
+      //     this.$toast.success('表單驗證通過，正在跳轉...')
+      //     this.$router.push('/ContributionDetails')
+      //   } else {
+      //     this.$toast.fail('請檢查表單填寫是否正確')
+      //   }
+      // })
     },
-    onNext() {
-      this.onSubmit()
-    },
+    
     onConnectionTypeConfirm(val) {
       this.form.connectionType = val
       this.showConnectionPicker = false

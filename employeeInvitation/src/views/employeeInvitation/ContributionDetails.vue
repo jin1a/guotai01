@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     onPrev() {
-      this.$emit('prev')
+      this.$router.go(-1)
     },
     onNext() {
       this.$emit('next')
@@ -133,9 +133,10 @@ export default {
       this.showLimitPicker = false
     },
     async onSubmit() {
+      this.$router.push('/ProjectSelection')
       // 校验通过自动提交，否则自动提示
-      this.$toast('提交成功')
-      this.onNext()
+      // this.$toast('提交成功')
+      // this.onNext()
     }
   }
 }

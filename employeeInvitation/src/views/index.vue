@@ -62,7 +62,8 @@ export default {
         this.$toast('請輸入完整驗證碼')
         return
       }
-      this.$toast('驗證成功')
+      this.$router.push('/employee-information')
+      // this.$toast('驗證成功')
     }
   }
 }
