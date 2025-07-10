@@ -10,6 +10,7 @@ import '@/assets/js/generatedValidate/index' //表单校验
 import validatorItem from '@/assets/js/generatedValidate/generatedValidateItem' //表单校验
 import '@utils/compatible' //兼容性代码
 import NoMoreClick from '@/directive/no-more-click'
+import VueSignaturePad from 'vue-signature-pad';
 //全局注册vant常用组件
 import 'vant/lib/index.css'
 import 'viewerjs/dist/viewer.css'
@@ -52,6 +53,7 @@ Vue.use(TabbarItem)
 Vue.use(Lazyload, {
   lazyComponent: true,
 })
+Vue.use(VueSignaturePad);
 
 // 设置 Vant 组件的语言
 Locale.use('zh-HK')

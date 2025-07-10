@@ -17,6 +17,10 @@ const protocolSpecification = () => import('@/views/employeeInvitation/ProtocolS
 const employeeInformation = () => import('@/views/employeeInvitation/EmployeeInformation.vue')
 const ContributionDetails = () => import('@/views/employeeInvitation/ContributionDetails.vue')
 const ProjectSelection = () => import('@/views/employeeInvitation/ProjectSelection.vue')
+const OffshoreAccounts = () => import('@/views/employeeInvitation/OffshoreAccounts.vue')
+const TaxDetails = () => import('@/views/employeeInvitation/TaxDetails.vue')
+const UploadMaterials = () => import('@/views/employeeInvitation/UploadMaterials.vue')
+const Signature = () => import('@/views/employeeInvitation/Signature.vue')
 
 export default [
   {
@@ -116,5 +120,38 @@ export default [
     meta: {
       title: '歸屬於僱員的供款投放項目選擇'
     }
+  },
+  {
+    path: '/OffshoreAccounts',
+    name: 'OffshoreAccounts',
+    component: OffshoreAccounts,
+    meta: {
+      title: '海外帳戶稅收合規法案詳情'
+    }
+  },
+  {
+    path: '/TaxDetails',
+    name: 'TaxDetails',
+    component: TaxDetails,
+    meta: {
+      title: '海外帳戶稅收合規法案詳情'
+    }
+  },
+  {
+    path: '/UploadMaterials',
+    name: 'UploadMaterials',
+    component: UploadMaterials,
+    meta: {
+      title: '相关材料上传'
+    }
+  },
+  {
+    path: '/Signature',
+    name: 'Signature',
+    component: Signature,
+    meta: {
+      title: '相关材料上传'
+    }
   }
+  
 ]

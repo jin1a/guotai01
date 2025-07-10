@@ -1,18 +1,22 @@
 <template>
-  <div class="steps">  
-    <div class="step2">
-      <div class="content" v-for="item in total" :key="item">
-        <div class="iconContent">
-          <div class="nub1" v-if="item == nub">{{item}}</div>
-          <div class="nub2" v-else-if="item > nub">{{item}}</div>
-          <div class="icon"  v-if="item < nub">        
-            <img width="24" height="24" :src="icon1" alt="icon1" />        
-          </div>
-        </div>      
-        <div class="title" v-if="item == nub">{{title}}</div>
-      </div>
-    </div>   
-  </div>
+  <div>
+    <div class="steps">  
+      <div class="step2">
+        <div class="content" v-for="item in total" :key="item">
+          <div class="iconContent">
+            <div class="nub1" v-if="item == nub">{{item}}</div>
+            <div class="nub2" v-else-if="item > nub">{{item}}</div>
+            <div class="icon"  v-if="item < nub">        
+              <img width="24" height="24" :src="icon1" alt="icon1" />        
+            </div>
+          </div>      
+          <div class="title" v-if="item == nub">{{title}}</div>
+        </div>
+      </div> 
+      <div class="footer"></div>  
+    </div>
+    
+  </div>  
 </template>
 <script>
 import icon1 from '../../assets/images/icons/icon1.svg';
@@ -52,7 +56,7 @@ export default {
   background-size: cover; 
   
 }
-.step2{padding-top: 26px;}
+.step2{padding-top: 26px;height: 40px;}
 .steps .content {
  float: left; padding: 0 0 0 10px; 
 }
@@ -61,4 +65,9 @@ export default {
 .nub2{width:24px ;height:24px;background: #fff;border-radius: 50%;color: #00975F;text-align: center;line-height: 24px;font-size: 16px;}
 .title{font-size: 14px;line-height: 24px; color: #fff;float: left;padding: 0 10px;}
 
+.footer {
+  border-radius: 12px 12px 0 0;
+  height: 24px;
+  background: #fff;
+}
 </style>
