@@ -1,90 +1,72 @@
 <template>
   <div class="employee-info-page">
     <!-- 顶部步骤条 -->
-    <Steps :total="7" :nub="1" title="僱員信息" />
+    <div class="steps-bar">
+      <div class="steps-header">
+        <div class="steps-title">
+          <van-icon name="success" class="steps-icon" />
+          僱員資料確認
+        </div>
+        <div class="steps-numbers">
+          <div class="step-circle" v-for="n in 5" :key="n">{{ n }}</div>
+        </div>
+      </div>
+    </div>
     <div class="form-area">
       <div class="form-title">
         <span class="title-bar"></span>
         僱員信息
       </div>
-      <van-form ref="formRef">
+      <form class="form-content">
+
         <div class="form-group">
           <label class="form-label">計劃編碼</label>
-          <van-field class="form-input readonly" v-model="form.planCode" readonly />
+          <input class="form-input readonly" v-model="form.planCode" readonly />
         </div>
         <div class="form-group">
           <label class="form-label">僱主名稱</label>
-          <van-field class="form-input readonly" v-model="form.employerName" readonly />
+          <input class="form-input readonly" v-model="form.employerName" readonly />
         </div>
 
         <div class="form-group">
           <label class="form-label">僱員編號</label>
-          <van-field class="form-input readonly" v-model="form.employeeCode" readonly />
+          <input class="form-input readonly" v-model="form.employeeCode" readonly />
         </div>
         <div class="form-group">
           <label class="form-label required">僱員類別</label>
-          <van-field 
-            class="form-input" 
-            v-model="form.employeeType" 
-            placeholder="請輸入"
-            :rules="[{ required: true, message: '請輸入僱員類別' }]"
-          />
+          <input class="form-input" v-model="form.employeeType" placeholder="請輸入" />
         </div>
         <div class="form-group">
           <label class="form-label required">銜接類別</label>
           <div class="input-arrow" @click="showConnectionPicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="form.connectionType" 
-              placeholder="請選擇" 
-              readonly
-              :rules="[{ required: true, message: '請選擇銜接類別' }]"
-            />
+            <input class="form-input" v-model="form.connectionType" placeholder="請選擇" readonly />
             <van-icon name="arrow-down" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">中文姓名</label>
-          <van-field class="form-input readonly" v-model="form.chineseName" readonly />
+          <input class="form-input readonly" v-model="form.chineseName" readonly />
         </div>
         <div class="form-group">
           <label class="form-label">外文姓名 <span class="field-tip">(需與身份證相同)</span></label>
-          <van-field 
-            class="form-input" 
-            v-model="form.englishName" 
-            placeholder="請輸入"
-            :rules="[
-              { required: true, message: '請輸入外文姓名' },
-              { pattern: /^[a-zA-Z\s]+$/, message: '外文姓名只能包含英文字母和空格' }
-            ]"
-          />
+          <input class="form-input" v-model="form.englishName" placeholder="請輸入" />
         </div>
         <div class="form-group">
           <label class="form-label">身份證類別 <span class="field-tip">(需與身份證相同)</span></label>
           <div class="input-arrow" @click="showIdTypePicker = true">
-            <van-field 
-              class="form-input readonly" 
-              v-model="form.idType" 
-              readonly
-            />
+            <input class="form-input readonly" v-model="form.idType" readonly />
             <van-icon name="arrow-down" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">身份證編碼</label>
-          <van-field class="form-input readonly" v-model="form.idNumber" readonly />
+          <input class="form-input readonly" v-model="form.idNumber" readonly />
         </div>
         <div class="row-flex">
           <div class="form-group flex-1">
             <label class="form-label required">出生日期</label>
             <div class="input-arrow" @click="showBirthDatePicker = true">
-              <van-field 
-                class="form-input" 
-                v-model="form.birthDate" 
-                placeholder="請選擇" 
-                readonly
-                :rules="[{ required: true, message: '請選擇出生日期' }]"
-              />
+              <input class="form-input" v-model="form.birthDate" placeholder="請選擇" readonly />
               <van-icon name="calendar-o" />
             </div>
           </div>
@@ -100,145 +82,76 @@
                 <span class="radio-box" :class="{ checked: form.gender === '女' }"></span>女
               </label>
             </div>
-            <van-field 
-              v-model="form.gender" 
-              :rules="[{ required: true, message: '請選擇性別' }]"
-              style="display: none;"
-            />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label required">出生地點</label>
           <div class="input-arrow" @click="showBirthPlacePicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="form.birthPlace" 
-              placeholder="請選擇" 
-              readonly
-              :rules="[{ required: true, message: '請選擇出生地點' }]"
-            />
+            <input class="form-input" v-model="form.birthPlace" placeholder="請選擇" readonly />
             <van-icon name="arrow-down" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label required">國籍/地區</label>
           <div class="input-arrow" @click="showNationalityPicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="form.nationality" 
-              placeholder="請選擇" 
-              readonly
-              :rules="[{ required: true, message: '請選擇國籍/地區' }]"
-            />
+            <input class="form-input" v-model="form.nationality" placeholder="請選擇" readonly />
             <van-icon name="arrow-down" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label required">流動電話</label>
-          <van-field 
-            class="form-input readonly" 
-            v-model="form.mobile" 
-            readonly
-            :rules="[
-              { required: true, message: '請輸入流動電話' },
-              { pattern: /^1[3-9]\d{9}$/, message: '請輸入正確的手機號碼' }
-            ]"
-          />
+          <input class="form-input readonly" v-model="form.mobile" readonly />
         </div>
         <div class="form-group">
           <label class="form-label">固定電話</label>
-          <van-field 
-            class="form-input" 
-            v-model="form.phone" 
-            label="" 
-            placeholder="請輸入"
-            :rules="[
-              { pattern: /^(\d{3,4}-)?\d{7,8}$/, message: '請輸入正確的固定電話號碼' }
-            ]"
-          />
+          <input class="form-input" v-model="form.phone" placeholder="請輸入" />
         </div>
         <div class="form-group">
           <label class="form-label required">電郵地址</label>
-          <van-field 
-            class="form-input readonly" 
-            v-model="form.email" 
-            readonly
-            :rules="[
-              { required: true, message: '請輸入電郵地址' },
-              { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '請輸入正確的電郵地址格式' }
-            ]"
-          />
+          <input class="form-input readonly" v-model="form.email" readonly />
         </div>
         <div class="form-group">
           <label class="form-label required">地址（永久地址）</label>
           <div class="input-arrow" @click="showAddressArea = true">
-            <van-field 
-              class="form-input" 
-              :value="addressText" 
-              placeholder="请选择" 
-              readonly
-              :rules="[{ 
-                required: true, 
-                validator: (val) => {
-                  return !!(this.addressText && this.addressText.trim() !== '')
-                },
-                message: '請選擇地址' 
-              }]"
-            />
+            <input class="form-input" :value="addressText" placeholder="请选择" readonly />
             <van-icon name="arrow-down" />
           </div>
-          <van-field 
-            class="form-input mt8" 
-            v-model="form.addressDetail" 
-            placeholder="街道、门牌、大廈、楼层、室"
-            :rules="[{ required: true, message: '請輸入詳細地址' }]"
-          />
+          <input class="form-input mt8" v-model="form.addressDetail" placeholder="街道、门牌、大廈、楼层、室" />
         </div>
         <div class="form-group">
           <label class="form-label">通訊地址 <span class="field-tip">(生與永久地址不同,請填寫此欄。)</span></label>
           <div class="input-arrow" @click="showContactArea = true">
-            <van-field 
-              class="form-input" 
-              :value="contactAddressText" 
-              placeholder="请选择" 
-              readonly
-            />
+            <input class="form-input" :value="contactAddressText" placeholder="请选择" readonly />
             <van-icon name="arrow-down" />
           </div>
-          <van-field 
-            class="form-input mt8" 
-            v-model="form.contactDetail" 
-            placeholder="街道、门牌、大廈、楼层、室"
-          />
+          <input class="form-input mt8" v-model="form.contactDetail" placeholder="街道、门牌、大廈、楼层、室" />
         </div>
         <div class="form-group">
           <label class="form-label required">聘用日期</label>
           <div class="input-arrow" @click="showHireDatePicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="form.hireDate" 
-              readonly
-              :rules="[{ required: true, message: '請選擇聘用日期' }]"
-            />
+            <input class="form-input" v-model="form.hireDate" readonly />
             <van-icon name="calendar-o" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">原參加私退金計劃日期 <span class="field-tip">(新僱員無需填寫)</span></label>
           <div class="input-arrow" @click="showOldPlanDatePicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="form.oldPlanDate" 
-              readonly
-            />
+            <input class="form-input" v-model="form.oldPlanDate" readonly />
             <van-icon name="calendar-o" />
           </div>
         </div>
-      </van-form>
+        <!-- <div class="form-group">
+          <label class="form-label required">示例下拉框</label>
+          <div class="input-arrow" @click="showExamplePicker = true">
+            <input class="form-input" v-model="form.exampleSelectLabel" placeholder="请选择" readonly />
+            <van-icon name="arrow-down" />
+          </div>
+        </div> -->
+      </form>
     </div>
     <div class="btn-group">
       <van-button class="btn-back" type="default" round block @click="onBack">返回</van-button>
-      <van-button class="btn-next" type="success"  @click="onSubmit1">下一步</van-button>
+      <van-button class="btn-next" type="success" round block @click="onNext">下一步</van-button>
     </div>
     <!-- 各类选择器弹窗（省略数据源和事件实现，可根据实际需求补充） -->
     <van-popup v-model="showConnectionPicker" position="bottom">
@@ -274,23 +187,13 @@
       <van-area confirm-button-text="確定" cancel-button-text="取消" :area-list="addressAreaList"
         @confirm="onContactAreaConfirm" @cancel="showContactArea = false" />
     </van-popup>
-    <van-popup v-model="showBirthPlacePicker" position="bottom">
-      <van-picker :columns="birthPlaces" confirm-button-text="確定" cancel-button-text="取消" show-toolbar
-        @confirm="onBirthPlaceConfirm" @cancel="showBirthPlacePicker = false" />
-    </van-popup>
-    <van-popup v-model="showNationalityPicker" position="bottom">
-      <van-picker :columns="nationalities" confirm-button-text="確定" cancel-button-text="取消" show-toolbar
-        @confirm="onNationalityConfirm" @cancel="showNationalityPicker = false" />
-    </van-popup>
   </div>
 </template>
 
 <script>
-import { Icon, Button, Popup, Picker, DatetimePicker, Area, Form, Field } from 'vant'
+import { Icon, Button, Popup, Picker, DatetimePicker, Area } from 'vant'
 import { areaList } from '@vant/area-data'
 import { get } from '@/assets/js/utils/request'
-import Steps from '@/components/steps/Steps.vue'
-import { mapGetters } from 'vuex'
 export default {
   name: 'EmployeeInformation',
   components: {
@@ -299,10 +202,7 @@ export default {
     [Popup.name]: Popup,
     [Picker.name]: Picker,
     [DatetimePicker.name]: DatetimePicker,
-    [Area.name]: Area,
-    [Form.name]: Form,
-    [Field.name]: Field,
-    Steps
+    [Area.name]: Area
   },
   computed: {
     ...mapGetters(['userInfo'])
@@ -334,7 +234,7 @@ export default {
         contactCity: '',
         contactDistrict: '',
         contactDetail: '',
-        hireDate: '',
+        hireDate: '2025-06-10',
         oldPlanDate: '',
         exampleSelect: '', // 选中的值
         exampleSelectLabel: '' // 选中的显示文本
@@ -350,12 +250,8 @@ export default {
       addressText: '', // 展示已选省市区
       showContactArea: false, // 控制通讯地址选择弹窗
       contactAddressText: '', // 展示已选通讯省市区
-      showBirthPlacePicker: false, // 控制出生地点选择弹窗
-      showNationalityPicker: false, // 控制国籍选择弹窗
       connectionTypes: ['前員工', '現員工'],
       idTypes: ['澳門居民身份證', '香港居民身份證', '護照'],
-      birthPlaces: ['澳門', '香港', '中國內地', '台灣', '其他'],
-      nationalities: ['中國', '澳門', '香港', '台灣', '其他'],
       minDate: new Date(1900, 0, 1),
       maxDate: new Date(),
       exampleOptions: [] // 下拉选项
@@ -363,46 +259,15 @@ export default {
   },
   mounted() {
     console.log(this.userInfo,8877766)
-    // this.fetchExampleOptions()
+    this.fetchExampleOptions()
   },
   methods: {
     onBack() {
       this.$router.go(-1)
     },
-    onSubmit1() {
-      let kk=this.$refs.formRef.validate().then(res=>{
-        console.log(res,999)        
-        this.$toast.success('表單驗證通過，正在跳轉...')
-        this.$router.push('/ContributionDetails')
-      }).catch(err=>{
-        console.log(err,888)
-        this.$toast.fail(err[0].message)
-      })      
-      // this.$refs.formRef.validate((valid) => {
-      //   console.log(valid,999)
-      //   if (valid) {
-      //     // 额外的业务逻辑验证
-      //     // if (this.form.birthDate && this.form.hireDate) {
-      //     //   const birthYear = new Date(this.form.birthDate).getFullYear()
-      //     //   const hireYear = new Date(this.form.hireDate).getFullYear()
-      //     //   const age = hireYear - birthYear
-      //     //   if (age < 16) {
-      //     //     this.$toast.fail('聘用時年齡不能少於16歲')
-      //     //     return
-      //     //   }
-      //     //   if (age > 65) {
-      //     //     this.$toast.fail('聘用時年齡不能超過65歲')
-      //     //     return
-      //     //   }
-      //     // }
-      //     this.$toast.success('表單驗證通過，正在跳轉...')
-      //     this.$router.push('/ContributionDetails')
-      //   } else {
-      //     this.$toast.fail('請檢查表單填寫是否正確')
-      //   }
-      // })
+    onNext() {
+      this.$toast('下一步')
     },
-    
     onConnectionTypeConfirm(val) {
       this.form.connectionType = val
       this.showConnectionPicker = false
@@ -458,14 +323,6 @@ export default {
       this.form.contactCity = values[1] ? values[1].name : ''
       this.form.contactDistrict = values[2] ? values[2].name : ''
       this.showContactArea = false
-    },
-    onBirthPlaceConfirm(val) {
-      this.form.birthPlace = val
-      this.showBirthPlacePicker = false
-    },
-    onNationalityConfirm(val) {
-      this.form.nationality = val
-      this.showNationalityPicker = false
     }
   }
 }
@@ -597,31 +454,6 @@ export default {
   background: #f7f8fa;
   color: #999;
   border: 0.5px solid #eaeaea;
-}
-
-/* Vant Field 组件样式覆盖 */
-:deep(.van-field__control) {
-  height: 42px;
-  font-size: 15px;
-  color: #222;
-}
-
-:deep(.van-field--error .van-field__control) {
-  color: #ee0a24;
-}
-
-:deep(.van-field__error-message) {
-  color: #ee0a24;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-:deep(.van-field__body) {
-  padding: 0;
-}
-
-:deep(.van-field__control) {
-  padding: 0;
 }
 
 .input-arrow {

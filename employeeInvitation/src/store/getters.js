@@ -1,4 +1,4 @@
 const getters = {
-  networkState: state => state.app.networkState
+  userInfo: (state) => state.common.userInfo,
 }
 export default getters
