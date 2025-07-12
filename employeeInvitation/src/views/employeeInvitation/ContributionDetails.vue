@@ -100,8 +100,7 @@ export default {
         { text: '5%', value: '5' },
         { text: '6%', value: '6' }
       ],
-      limitOptions: [
-       
+      limitOptions: [       
         { text: '1000元', value: '1000' },
         { text: '2000元', value: '2000' }
       ]
@@ -120,10 +119,7 @@ export default {
   methods: {
     onPrev() {
       this.$router.go(-1)
-    },
-    onNext() {
-      this.$emit('next')
-    },
+    },   
     onRatioConfirm(val) {
       this.contributionRatio = val.value
       this.showRatioPicker = false

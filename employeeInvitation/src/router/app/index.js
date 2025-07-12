@@ -21,6 +21,8 @@ const OffshoreAccounts = () => import('@/views/employeeInvitation/OffshoreAccoun
 const TaxDetails = () => import('@/views/employeeInvitation/TaxDetails.vue')
 const UploadMaterials = () => import('@/views/employeeInvitation/UploadMaterials.vue')
 const Signature = () => import('@/views/employeeInvitation/Signature.vue')
+const Statement = () => import('@/views/employeeInvitation/Statement.vue')
+const ApplicationForm = () => import('@/views/employeeInvitation/ApplicationForm.vue')
 
 export default [
   {
@@ -43,54 +45,7 @@ export default [
     }
   },
   {
-    path: '/home',
-    name: 'home',
-    component: home,
-    meta: {
-      title: '首頁'
-    }
-  },
-  // {
-  //   path: '/contributionDetails',
-  //   component: contributionDetails
-  // },
-  {
-    path: '/mine',
-    name: 'mine',
-    component: mine,
-    meta: {
-      title: '我的',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/products',
-    name: 'products',
-    component: products,
-    meta: {
-      title: '商品',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/services',
-    name: 'services',
-    component: services,
-    meta: {
-      title: '服務',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/employee-invitation',
-    name: 'EmployeeInvitation',
-    component: () => import('@/views/app/employeeInvitation/AcceptInvitation.vue'),
-    meta: {
-      title: '遞交僱員開戶申請'
-    }
-  },
-  {
-    path: '/protocol-specification',
+    path: '/ProtocolSpecification',
     name: 'ProtocolSpecification',
     component: protocolSpecification,
     meta: {
@@ -98,7 +53,7 @@ export default [
     }
   },
   {
-    path: '/employee-information',
+    path: '/EmployeeInformation',
     name: 'EmployeeInformation',
     component: employeeInformation,
     meta: {
@@ -150,8 +105,23 @@ export default [
     name: 'Signature',
     component: Signature,
     meta: {
-      title: '相关材料上传'
+      title: '簽名'
+    }
+  },
+  {
+    path: '/Statement',
+    name: 'Statement',
+    component: Statement,
+    meta: {
+      title: '聲明'
+    }
+  },
+  {
+    path: '/ApplicationForm',
+    name: 'ApplicationForm',
+    component: ApplicationForm,
+    meta: {
+      title: '參加計劃申請單'
     }
   }
-  
 ]

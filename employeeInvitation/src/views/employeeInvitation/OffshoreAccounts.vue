@@ -136,53 +136,6 @@ export default {
   flex-direction: column;
 }
 
-.steps-bar {
-  background: linear-gradient(90deg, #5ebc75 0%, #07c160 100%);
-  padding: 0 0 12px 0;
-  border-radius: 0 0 18px 18px;
-  box-shadow: 0 2px 8px rgba(7, 193, 96, 0.08);
-}
-
-.steps-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px 0 16px;
-}
-
-.steps-title {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.steps-icon {
-  font-size: 20px;
-  margin-right: 6px;
-  color: #fff;
-}
-
-.steps-numbers {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.step-circle {
-  width: 28px;
-  height: 28px;
-  background: #fff;
-  color: #07c160;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 16px;
-}
-
 .form-area {
   padding: 0 6px 0 6px;
   margin: 0 15px;

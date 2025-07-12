@@ -138,7 +138,7 @@ export default {
         return;
       }
       // 下一步逻辑
-      this.$router.push({ name: '下一步页面路由名' });
+      this.$router.push('/Statement')
     },
   },
 };

@@ -13,7 +13,7 @@
           <div class="input-arrow" @click="showConnectionPicker = true">
             <van-field 
               class="form-input" 
-              v-model="USCitizenText" 
+              v-model="USCitizenText1" 
               placeholder="請選擇" 
               readonly
               :rules="[{ required: true, message: '請選擇' }]"
@@ -21,55 +21,66 @@
             <van-icon name="arrow-down" />
           </div>
         </div>
-        <div class="description">
-          <div class="title">具體原因提供以下資料：</div>
-          <div class="content">
-            <p>（a）帳戶持有人的常居地的司法管轄區（澳門特別行政區包括在內）</p>
-            <p>（b）該常居地的司法管轄區發給帳戶持有人的稅務編號。</p>
+        <div v-if="form.USCitizenValue1 === 'N'">
+          <div class="description">
+            <div class="title">具體原因提供以下資料：</div>
+            <div class="content">
+              <p>（a）帳戶持有人的常居地的司法管轄區（澳門特別行政區包括在內）</p>
+              <p>（b）該常居地的司法管轄區發給帳戶持有人的稅務編號。</p>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label required">稅務居民所在國家/地區</label>
-          <div class="input-arrow" @click="showConnectionPicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="USCitizenText" 
-              placeholder="請選擇" 
-              readonly
-              :rules="[{ required: true, message: '請選擇' }]"
-            />
-            <van-icon name="arrow-down" />
-          </div>      
-        </div>
-        <div class="form-group">
-          <label class="form-label required">稅務編號</label>
-          <van-field class="form-input " v-model="form.employerName" placeholder="請輸入"
-            :rules="[{ required: true, message: '請輸入' }]" />          
-        </div>
-        <div style="font-size: 14px;color: #4B5563;font-weight: 400;line-height: 24px;margin-bottom: 10px;">
-          （如帳戶持有人在澳門特別行政區有納稅義務，稅務編號是其納稅人編號或澳門特別行政區居民身份證編號。）
-        </div>
-        <div class="form-group">
-          <label class="form-label required">無稅務編號原因</label>
-          <div class="input-arrow" @click="showConnectionPicker = true">
-            <van-field 
-              class="form-input" 
-              v-model="USCitizenText" 
-              placeholder="請選擇" 
-              readonly
-              :rules="[{ required: true, message: '請選擇' }]"
-            />
-            <van-icon name="arrow-down" />
+          <div v-for="item in taxList" :key="item.id" class="taxList" >
+            <div class="form-group">
+              <label class="form-label required">稅務居民所在國家/地區</label>
+              <div class="input-arrow" @click="showConnectionPicker = true">
+                <van-field 
+                  class="form-input" 
+                  v-model="USCitizenText" 
+                  placeholder="請選擇" 
+                  readonly
+                  :rules="[{ required: true, message: '請選擇' }]"
+                />
+                <van-icon name="arrow-down" />
+              </div>      
+            </div>          
+            <div class="form-group">
+              <label class="form-label">稅務編號</label>
+              <van-field class="form-input " v-model="form.employerName" placeholder="請輸入" />          
+            </div>
+            <div v-if="!(form.employerName&&form.employerName.length>0)">
+              <div style="font-size: 14px;color: #4B5563;font-weight: 400;line-height: 24px;margin-bottom: 10px;">
+              （如帳戶持有人在澳門特別行政區有納稅義務，稅務編號是其納稅人編號或澳門特別行政區居民身份證編號。）
+              </div>
+              <div class="form-group">
+                <label class="form-label required">無稅務編號原因</label>
+                <div class="input-arrow" @click="showConnectionPicker = true">
+                  <van-field 
+                    class="form-input" 
+                    v-model="USCitizenText" 
+                    placeholder="請選擇" 
+                    readonly
+                    :rules="[{ required: true, message: '請選擇' }]"
+                  />
+                  <van-icon name="arrow-down" />
+                </div>          
+              </div>
+              <div class="form-group">
+                <label class="form-label required">具體原因</label>
+                <van-field class="form-input " v-model="form.employerName" type="textarea" rows="3" placeholder="請輸入具體原因"
+                  :rules="[{ required: true, message: '請輸入具體原因' }]" />          
+              </div>
+            </div>
+            
+          </div>
+          <div class="btn-add-box">
+            <div class="btn-add" @click="addTaxList"></div>
           </div>          
         </div>
-        <div class="form-group">
-          <label class="form-label required">具體原因</label>
-          <van-field class="form-input " v-model="form.employerName" type="textarea" rows="3" placeholder="請輸入具體原因"
-            :rules="[{ required: true, message: '請輸入具體原因' }]" />          
-        </div>        
+              
       </van-form>
       
     </div>
+    
     <div class="btn-group">
       <van-button class="btn-back" type="default" round block @click="onBack">返回</van-button>
       <van-button class="btn-next" type="success" round block @click="onSubmit1">下一步</van-button>
@@ -77,7 +88,7 @@
     <!-- 各类选择器弹窗（省略数据源和事件实现，可根据实际需求补充） -->
     <van-popup v-model="showConnectionPicker" position="bottom">
       <van-picker :columns="connectionTypes" confirm-button-text="確定" cancel-button-text="取消" show-toolbar
-        @confirm="onConnectionTypeConfirm" @cancel="showConnectionPicker = false" />
+        @confirm="onConnectionTypeConfirm" @change="onConnectionTypeChange" @cancel="showConnectionPicker = false" />
     </van-popup>
   </div>
 </template>
@@ -102,11 +113,15 @@ export default {
   },
   data() {
     return {
+      taxList:[{id:1}],
+      total:1,
       form: {
         planCode: '',
         employerName: '',
-        USCitizenValue: ''  
+        USCitizenValue1: '',
+        USCitizenValue: ''
       },
+      USCitizenText1: '',
       USCitizenText: '',
       showConnectionPicker: false,
       connectionTypes: [
@@ -124,15 +139,21 @@ export default {
     onBack() {
       this.$router.go(-1)
     },
+    onConnectionTypeChange(val,a,b,c) {
+      console.log(val,a,b,c,999)
+    },
     onConnectionTypeConfirm(val) {      
-      this.USCitizenText = val.text
-      this.form.USCitizenValue = val.value
+      this.USCitizenText1 = val.text
+      this.form.USCitizenValue1 = val.value
       this.showConnectionPicker = false
+    },
+    addTaxList() {
+      this.taxList.push({id:this.taxList.length+1})
     },
     onSubmit1() {
       let kk=this.$refs.formRef.validate().then(res=>{
         console.log(res,999)        
-        this.$toast.success('表單驗證通過，正在跳轉...')
+        // this.$toast.success('表單驗證通過，正在跳轉...')
         this.$router.push('/UploadMaterials')
       }).catch(err=>{
         console.log(err,888)
@@ -145,6 +166,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-add-box{
+  text-align: right;
+}
+.btn-add{
+  float: right;
+  width: 30px;
+  height: 30px;
+  background:url('../../assets/images/icons/icon2.png') no-repeat center center; 
+  color: #fff;
+}
+.taxList{
+  border-bottom: 1px solid #E5E7EB; 
+  margin: 0px 0 20px 0;
+}
+.taxList:last-child{
+  border-bottom: none;
+}
 .description .title {
   font-size: 16px;
   color: #F6400E;
@@ -166,53 +204,6 @@ export default {
   background: #fff;
   display: flex;
   flex-direction: column;
-}
-
-.steps-bar {
-  background: linear-gradient(90deg, #5ebc75 0%, #07c160 100%);
-  padding: 0 0 12px 0;
-  border-radius: 0 0 18px 18px;
-  box-shadow: 0 2px 8px rgba(7, 193, 96, 0.08);
-}
-
-.steps-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px 0 16px;
-}
-
-.steps-title {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.steps-icon {
-  font-size: 20px;
-  margin-right: 6px;
-  color: #fff;
-}
-
-.steps-numbers {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.step-circle {
-  width: 28px;
-  height: 28px;
-  background: #fff;
-  color: #07c160;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 16px;
 }
 
 .form-area {
