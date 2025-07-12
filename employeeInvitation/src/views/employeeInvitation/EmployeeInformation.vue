@@ -146,13 +146,14 @@
           />
         </div>
         <div class="form-group">
-          <label class="form-label">固定電話</label>
+          <label class="form-label required ">固定電話</label>
           <van-field 
             class="form-input" 
             v-model="form.phone" 
             label="" 
             placeholder="請輸入"
             :rules="[
+              { required: true, message: '請輸入正確的固定電話號碼' },
               { pattern: /^(\d{3,4}-)?\d{7,8}$/, message: '請輸入正確的固定電話號碼' }
             ]"
           />
