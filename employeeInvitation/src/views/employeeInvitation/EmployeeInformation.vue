@@ -291,7 +291,7 @@ import { Icon, Button, Popup, Picker, DatetimePicker, Area, Form, Field } from '
 import { areaList } from '@vant/area-data'
 import { get } from '@/assets/js/utils/request'
 import Steps from '@/components/steps/Steps.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters,mapMutations } from 'vuex'
 export default {
   name: 'EmployeeInformation',
   components: {
@@ -367,6 +367,9 @@ export default {
     // this.fetchExampleOptions()
   },
   methods: {
+    ...mapMutations([
+      'SET_ORG_IDS', 
+    ]),
     onBack() {
       this.$router.go(-1)
     },
