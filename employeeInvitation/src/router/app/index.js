@@ -23,6 +23,17 @@ const UploadMaterials = () => import('@/views/employeeInvitation/UploadMaterials
 const Signature = () => import('@/views/employeeInvitation/Signature.vue')
 const Statement = () => import('@/views/employeeInvitation/Statement.vue')
 const ApplicationForm = () => import('@/views/employeeInvitation/ApplicationForm.vue')
+// 私人退休金
+const PRProtocolSpecification = () => import('@/views/privateRefund/PRProtocolSpecification.vue')
+const PREmployeeInformation = () => import('@/views/privateRefund/PREmployeeInformation.vue')
+const PRContributionDetails = () => import('@/views/privateRefund/PRContributionDetails.vue')
+const PRProjectSelection = () => import('@/views/privateRefund/PRProjectSelection.vue')
+const PROffshoreAccounts = () => import('@/views/privateRefund/PROffshoreAccounts.vue')
+const PRTaxDetails = () => import('@/views/privateRefund/PRTaxDetails.vue')
+const PRUploadMaterials = () => import('@/views/privateRefund/PRUploadMaterials.vue')
+const PRSignature = () => import('@/views/privateRefund/PRSignature.vue')
+const PRStatement = () => import('@/views/privateRefund/PRStatement.vue')
+const PRApplicationForm = () => import('@/views/privateRefund/PRApplicationForm.vue')
 
 export default [
   {
@@ -119,6 +130,87 @@ export default [
   {
     path: '/ApplicationForm',
     name: 'ApplicationForm',
+    component: ApplicationForm,
+    meta: {
+      title: '參加計劃申請單'
+    }
+  },
+  // 私人退休金
+  {
+    path: '/PRProtocolSpecification',
+    name: 'PRProtocolSpecification',
+    component: protocolSpecification,
+    meta: {
+      title: '协议说明'
+    }
+  },
+  {
+    path: '/PREmployeeInformation',
+    name: 'PREmployeeInformation',
+    component: employeeInformation,
+    meta: {
+      title: '僱員信息'
+    }
+  },
+  {
+    path: '/PRContributionDetails',
+    name: 'PRContributionDetails',
+    component: ContributionDetails,
+    meta: {
+      title: '供款详情'
+    }
+  },
+  {
+    path: '/PRProjectSelection',
+    name: 'PRProjectSelection',
+    component: ProjectSelection,
+    meta: {
+      title: '歸屬於僱員的供款投放項目選擇'
+    }
+  },
+  {
+    path: '/PROffshoreAccounts',
+    name: 'PROffshoreAccounts',
+    component: OffshoreAccounts,
+    meta: {
+      title: '海外帳戶稅收合規法案詳情'
+    }
+  },
+  {
+    path: '/PRTaxDetails',
+    name: 'PRTaxDetails',
+    component: TaxDetails,
+    meta: {
+      title: '海外帳戶稅收合規法案詳情'
+    }
+  },
+  {
+    path: '/PRUploadMaterials',
+    name: 'PRUploadMaterials',
+    component: UploadMaterials,
+    meta: {
+      title: '相关材料上传'
+    }
+  },
+  {
+    path: '/PRSignature',
+    name: 'PRSignature',
+    component: Signature,
+    meta: {
+      title: '簽名'
+    }
+  },
+  {
+    path: '/PRStatement',
+    name: 'PRStatement',
+    component: Statement,
+    meta: {
+      title: '聲明'
+    }
+  },
+  {
+    path: '/PRApplicationForm',
+    name: 'PRApplicationForm',
     component: ApplicationForm,
     meta: {
       title: '參加計劃申請單'

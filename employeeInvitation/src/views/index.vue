@@ -66,7 +66,12 @@ export default {
         this.$toast('請輸入完整驗證碼')
         return
       }
-      this.$router.push('/ProtocolSpecification')
+      let type = this.$route.query.type
+      if (type === 'PR') {
+        this.$router.push('/PRProtocolSpecification')
+      } else {
+        this.$router.push('/ProtocolSpecification')
+      }
       // this.$toast('驗證成功')
     }
   }
