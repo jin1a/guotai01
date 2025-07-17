@@ -34,6 +34,8 @@ const PRUploadMaterials = () => import('@/views/privateRefund/PRUploadMaterials.
 const PRSignature = () => import('@/views/privateRefund/PRSignature.vue')
 const PRStatement = () => import('@/views/privateRefund/PRStatement.vue')
 const PRApplicationForm = () => import('@/views/privateRefund/PRApplicationForm.vue')
+const PRBeneficiary = () => import('@/views/privateRefund/PRBeneficiary.vue')
+const TTtest = () => import('@/views/privateRefund/TTtest.vue')
 
 export default [
   {
@@ -139,7 +141,7 @@ export default [
   {
     path: '/PRProtocolSpecification',
     name: 'PRProtocolSpecification',
-    component: protocolSpecification,
+    component: PRProtocolSpecification,
     meta: {
       title: '协议说明'
     }
@@ -147,7 +149,7 @@ export default [
   {
     path: '/PREmployeeInformation',
     name: 'PREmployeeInformation',
-    component: employeeInformation,
+    component: PREmployeeInformation,
     meta: {
       title: '僱員信息'
     }
@@ -155,7 +157,7 @@ export default [
   {
     path: '/PRContributionDetails',
     name: 'PRContributionDetails',
-    component: ContributionDetails,
+    component: PRContributionDetails,
     meta: {
       title: '供款详情'
     }
@@ -163,7 +165,7 @@ export default [
   {
     path: '/PRProjectSelection',
     name: 'PRProjectSelection',
-    component: ProjectSelection,
+    component: PRProjectSelection,
     meta: {
       title: '歸屬於僱員的供款投放項目選擇'
     }
@@ -171,7 +173,7 @@ export default [
   {
     path: '/PROffshoreAccounts',
     name: 'PROffshoreAccounts',
-    component: OffshoreAccounts,
+    component: PROffshoreAccounts,
     meta: {
       title: '海外帳戶稅收合規法案詳情'
     }
@@ -179,7 +181,7 @@ export default [
   {
     path: '/PRTaxDetails',
     name: 'PRTaxDetails',
-    component: TaxDetails,
+    component: PRTaxDetails,
     meta: {
       title: '海外帳戶稅收合規法案詳情'
     }
@@ -187,7 +189,7 @@ export default [
   {
     path: '/PRUploadMaterials',
     name: 'PRUploadMaterials',
-    component: UploadMaterials,
+    component: PRUploadMaterials,
     meta: {
       title: '相关材料上传'
     }
@@ -195,7 +197,7 @@ export default [
   {
     path: '/PRSignature',
     name: 'PRSignature',
-    component: Signature,
+    component: PRSignature,
     meta: {
       title: '簽名'
     }
@@ -203,7 +205,7 @@ export default [
   {
     path: '/PRStatement',
     name: 'PRStatement',
-    component: Statement,
+    component: PRStatement,
     meta: {
       title: '聲明'
     }
@@ -211,9 +213,25 @@ export default [
   {
     path: '/PRApplicationForm',
     name: 'PRApplicationForm',
-    component: ApplicationForm,
+    component: PRApplicationForm,
     meta: {
       title: '參加計劃申請單'
+    }
+  },
+  {
+    path: '/PRBeneficiary',
+    name: 'PRBeneficiary',
+    component: PRBeneficiary,
+    meta: {
+      title: '指定受益人'
+    }
+  },
+  {
+    path: '/TTtest',
+    name: 'TTtest',
+    component: TTtest,
+    meta: {
+      title: 'TTtest'
     }
   }
 ]
