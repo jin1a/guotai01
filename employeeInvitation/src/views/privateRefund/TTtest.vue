@@ -129,9 +129,8 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-.content-area {
-  flex: 1;
-  padding: 32px 24px 0 24px;
+.content-area {  
+  padding: 20px 5px 0 5px;
 }
 .pdf-title {
   font-size: 18px;
@@ -141,8 +140,7 @@ export default {
 }
 .pdf-iframe-wrapper {
   width: 100%;
-  height: 500px;
-  border: 1px solid #eee;
+  height: 600px; 
   background: #fff;
   position: relative;
   display: flex;
