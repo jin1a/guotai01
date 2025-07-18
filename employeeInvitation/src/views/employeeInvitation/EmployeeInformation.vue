@@ -122,7 +122,8 @@
         </div>
         <div class="form-group">
           <label class="form-label required">國籍/地區</label>
-          <div class="input-arrow" @click="showNationalityPicker = true">
+          <Select v-model="form.nationality" :options="nationalities" :rules="[{ required: true, message: '請選擇國籍/地區' }]" />
+          <!-- <div class="input-arrow" @click="showNationalityPicker = true">
             <van-field 
               class="form-input" 
               v-model="form.nationality" 
@@ -131,7 +132,7 @@
               :rules="[{ required: true, message: '請選擇國籍/地區' }]"
             />
             <van-icon name="arrow-down" />
-          </div>
+          </div> -->
         </div>
         <div class="form-group">
           <label class="form-label required">流動電話</label>
@@ -237,10 +238,11 @@
         </div>
       </van-form>
     </div>
-    <div class="btn-group">
+    <BTFooter @nextClick="onSubmit1" />
+    <!-- <div class="btn-group">
       <van-button class="btn-back" type="default" round block @click="onBack">返回</van-button>
       <van-button class="btn-next" type="success"  @click="onSubmit1">下一步</van-button>
-    </div>
+    </div> -->
     <!-- 各类选择器弹窗（省略数据源和事件实现，可根据实际需求补充） -->
     <van-popup v-model="showConnectionPicker" position="bottom">
       <van-picker :columns="connectionTypes" confirm-button-text="確定" cancel-button-text="取消" show-toolbar
@@ -292,6 +294,8 @@ import { areaList } from '@vant/area-data'
 import { get } from '@/assets/js/utils/request'
 import Steps from '@/components/steps/Steps.vue'
 import { mapGetters,mapMutations } from 'vuex'
+import BTFooter from '@/components/footer/BTFooter.vue'
+import Select from '@/components/select/Select.vue'
 export default {
   name: 'EmployeeInformation',
   components: {
@@ -303,7 +307,9 @@ export default {
     [Area.name]: Area,
     [Form.name]: Form,
     [Field.name]: Field,
-    Steps
+    Steps,
+    BTFooter,
+    Select
   },
   computed: {
     ...mapGetters(['userInfo'])
@@ -323,7 +329,7 @@ export default {
         birthDate: '',
         gender: '',
         birthPlace: '',
-        nationality: '',
+        nationality: '22',
         mobile: '13512341234',
         phone: '',
         email: '123321@126.com',
@@ -356,7 +362,29 @@ export default {
       connectionTypes: ['前員工', '現員工'],
       idTypes: ['澳門居民身份證', '香港居民身份證', '護照'],
       birthPlaces: ['澳門', '香港', '中國內地', '台灣', '其他'],
-      nationalities: ['中國', '澳門', '香港', '台灣', '其他'],
+      nationalities: [
+        {
+          text: '中國',
+          value: '11'
+        },
+        {
+          text: '澳門',
+          value: '22'
+        },  
+        {
+          text: '香港',
+          value: '33'
+        },
+        {
+          text: '台灣',
+          value: '44'
+        },
+        {
+          text: '其他',
+          value: '55'
+        }
+        // '中國', '澳門', '香港', '台灣', '其他'
+      ],
       minDate: new Date(1900, 0, 1),
       maxDate: new Date(),
       exampleOptions: [] // 下拉选项
