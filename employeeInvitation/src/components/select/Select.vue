@@ -1,6 +1,5 @@
 <template>
-  <div class="input-arrow">
-   
+  <div class="input-arrow">   
     <van-field
       v-model="displayLabel"
       class="form-input" 
@@ -11,8 +10,7 @@
       :rules="rules"
       @click="showPicker = !disabled"
     />
-    <van-icon name="arrow-down" />
-    
+    <van-icon name="arrow-down" />    
     <van-popup v-model:show="showPicker" position="bottom">
       <van-picker
         :columns="options"
@@ -22,8 +20,7 @@
         @cancel="showPicker = false"
         @confirm="onConfirm"
       />
-    </van-popup>
-    
+    </van-popup>    
   </div>
 </template>
 
