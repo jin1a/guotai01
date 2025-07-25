@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: '/saleH5',
+  publicPath: '',
   lintOnSave: false, //是否开启代码检查
   outputDir: 'dist', //打包输出目录
   productionSourceMap: false,
